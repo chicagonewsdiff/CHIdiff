@@ -192,10 +192,18 @@ class BaseParser(object):
                             styles=styles,
                             strip=strip)
 
+    def wordCheck(oldWords, newWords):
+        logging.info('No clue what this will output: %s', oldWords);  
+        logging.info('Same deal going on here: %s', newWords);
+        return True
+
     def show_diff(self, old, new):
         if len(old) == 0 or len(new) == 0:
             logging.info('Old or New empty')
             return False
+        # Here is where I call my new function
+        # if wordCheck(old, new) == false:
+        # return False
         new_hash = hashlib.sha224(new.encode('utf8')).hexdigest()
         logging.info(html_diff(old, new))
         html = """
